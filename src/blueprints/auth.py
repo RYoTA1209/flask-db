@@ -1,7 +1,7 @@
 from flask import Blueprint, redirect, url_for, render_template, request
 
 from forms.SignupForm import SignupForm
-from src.forms.SigninForm import SigninForm
+from forms.SigninForm import SigninForm
 
 auth_bp = Blueprint('auth', __name__, url_prefix='/auth/')
 
