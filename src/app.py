@@ -2,8 +2,8 @@ import uuid
 
 from flask import Flask
 
-from src.blueprints.auth import auth_bp
-from src.blueprints.home import home_bp
+from blueprints.auth import auth_bp
+from blueprints.home import home_bp
 
 
 def create_app():
