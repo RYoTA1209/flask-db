@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}
+
+{% block navbar_content %}
+    {{ super() }}
+    <div class="uk-navbar-right">
+        <a class="uk-button" href="{{ url_for('auth.sign_in') }}">
+            ログイン
+        </a>
+    </div>
+{% endblock navbar_content %}
+
+{% block content %}
+    home works!
+{% endblock content %}

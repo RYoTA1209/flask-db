@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="uk-card uk-card-default uk-width-large uk-margin-auto">
+        <div class="uk-card-header">
+            <h3 class="uk-card-title">{{ title }}</h3>
+        </div>
+        <div class="uk-card-body">
+            <form action="{{ url_for(endpoints) }}" method="post" class="uk-form-stacked">
+                {{ form.csrf_token }}
+                <div class="uk-margin">
+                    <lable class="uk-form-label">{{ form.email.label }}</lable>
+                    <div class="uk-form-controls">
+                        {{ form.email(class_="uk-input") }}
+                    </div>
+                </div>
+                <div class="uk-margin">
+                    <lable class="uk-form-label">{{ form.password.label }}</lable>
+                    <div class="uk-form-controls">
+                        {{ form.password(class_="uk-input") }}
+                    </div>
+                </div>
+                <div class="uk-margin">
+                    <div class="uk-form-controls">
+                        {{ form.submit(class_="uk-button uk-button-primary") }}
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock content %}

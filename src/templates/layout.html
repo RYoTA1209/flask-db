@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Sample{% block title %}{% endblock title %}</title>
+    {% block styles %}
+        <!-- UIkit CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.16/dist/css/uikit.min.css" />
+    {% endblock styles %}
+</head>
+<body {% block body_attribs %}{% endblock body_attribs %}>
+{% block body %}
+    <div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky">
+    {% block navbar %}
+        <nav class="uk-navbar-container uk-padding-small" uk-navbar>
+            {% block navbar_content %}
+                <div class="uk-navbar-left">
+                    <span class="uk-logo">Smaple</span>
+                </div>
+            {% endblock navbar_content %}
+        </nav>
+    {% endblock navbar %}
+    </div>
+    <div class="uk-container uk-padding-small">
+        {% block content %}
+        {% endblock content %}
+    </div>
+{% endblock body %}
+{% block sripts %}
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.16/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.16/dist/js/uikit-icons.min.js"></script>
+{% endblock %}
+</body>
+</html>
