@@ -1,6 +1,3 @@
-import sys
-sys.path.append('./src')
-
 from app import app
 import models
 
