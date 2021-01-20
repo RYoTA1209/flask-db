@@ -3,6 +3,9 @@ import uuid
 from flask import Flask
 from database import init_db
 
+# マイグレーション対象のファイルをインポートする
+from models.Users import User
+
 
 def create_app():
 	app = Flask(__name__)
