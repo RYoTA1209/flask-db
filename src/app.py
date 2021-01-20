@@ -1,11 +1,15 @@
 import uuid
 
 from flask import Flask
+from database import init_db
 
 
 def create_app():
 	app = Flask(__name__)
 	app.secret_key = uuid.uuid4().hex
+
+	app.config.from_object('src.config.Config')
+	init_db(app)
 
 	# register blueprints
 	from blueprints.auth import auth_bp
@@ -15,5 +19,6 @@ def create_app():
 	app.register_blueprint(auth_bp)
 
 	return app
+
 
 app = create_app()
