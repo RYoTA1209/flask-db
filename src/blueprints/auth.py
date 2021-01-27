@@ -1,4 +1,5 @@
 from flask import Blueprint, redirect, url_for, render_template, request
+from werkzeug.security import generate_password_hash
 
 from database import db
 from forms.SignupForm import SignupForm
@@ -44,17 +45,18 @@ def sign_up():
 	form = SignupForm()
 	if request.method == 'POST':
 		if form.validate_on_submit():
-			# サインサップの処理
+			# サインアップの処理
 			print(form.email.data, form.password.data)
 			email = form.email.data
 			password = form.password.data
+			hashed_password = generate_password_hash(password)  # パスワードのハッシュ化
 
 			# すでにemailが登録されている時は、DBに保存されない
 			if db.session.query(User).filter(User.email == email).first():
 				return render_template('signup.html', form=form, title='会員登録', endpoints='auth.sign_up')
 
 			# 新規にユーザーを追加する
-			new_user = User(email=email, password=password)
+			new_user = User(email=email, password=hashed_password)
 			db.session.add(new_user)
 			db.session.commit()
 
