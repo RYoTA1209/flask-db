@@ -5,6 +5,7 @@ from database import init_db
 
 # マイグレーション対象のファイルをインポートする
 from models.Users import User
+from models.Logins import Login
 
 
 def create_app():

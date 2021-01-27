@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+    <div>
+        {{ user.id }}
+    </div>
+    <div>
+        {{ user.email }}
+    </div>
+
+
+    <a class="uk-button uk-button-danger" href="{{ url_for('auth.sign_out') }}">
+        ログアウト
+    </a>
+{% endblock content %}

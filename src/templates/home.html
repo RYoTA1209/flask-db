@@ -3,9 +3,15 @@
 {% block navbar_content %}
     {{ super() }}
     <div class="uk-navbar-right">
-        <a class="uk-button" href="{{ url_for('auth.sign_in') }}">
-            ログイン
-        </a>
+        {% if user %}
+            <a class="uk-button" href="{{ url_for('auth.mypage') }}">
+                マイページ
+            </a>
+        {% else %}
+            <a class="uk-button" href="{{ url_for('auth.sign_in') }}">
+                ログイン
+            </a>
+        {% endif %}
     </div>
 {% endblock navbar_content %}
 
