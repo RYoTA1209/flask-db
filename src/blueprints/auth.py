@@ -1,5 +1,5 @@
 from flask import Blueprint, redirect, url_for, render_template, request
-from werkzeug.security import generate_password_hash
+from werkzeug.security import generate_password_hash, check_password_hash
 
 from database import db
 from forms.SignupForm import SignupForm
@@ -31,7 +31,7 @@ def sign_in():
 			user = db.session.query(User).filter(User.email == email).first()
 
 			# パスワードのチェック！
-			if not user.password == password:
+			if not check_password_hash(user.password, password):
 				return render_template('signup.html', form=form, title='ログイン', endpoints='auth.sign_in')
 
 			return redirect(url_for('home.home'))
